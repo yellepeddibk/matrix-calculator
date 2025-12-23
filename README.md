@@ -39,16 +39,21 @@ This project demonstrates robust input validation, comprehensive error handling,
 
 ## Project Structure
 ```
-MatrixCalculator/
-├── MainWebApp/                   # Folder containing the Flask web app
-│   ├── flask_app.py              # Flask backend server
-│   ├── matrix.html               # Web interface (HTML file)
-│   ├── matrix.js                 # JavaScript logic for the frontend
-│   └── style.css                 # Styling for the web app
-├── LICENSE                       # MIT License file
-├── PyQt5_Version.py              # PyQt5 GUI version of the calculator
-├── README.md                     # Documentation for the project (this file)
-└── requirements.txt              # List of dependencies required to run the project
+matrix-calculator/
+├── webapp/                        # Folder containing the Flask web app
+│   ├── app.py                     # Flask backend server
+│   ├── templates/
+│   │   └── matrix.html            # Web interface (HTML template)
+│   └── static/
+│       ├── js/
+│       │   └── matrix.js          # JavaScript logic for the frontend
+│       └── css/
+│           └── style.css          # Styling for the web app
+├── desktop/
+│   └── matrix_calculator_qt.py    # PyQt5 GUI version of the calculator
+├── LICENSE                        # MIT License file
+├── README.md                      # Documentation for the project (this file)
+└── requirements.txt               # List of dependencies required to run the project
 ```
 ---
 
@@ -57,8 +62,8 @@ MatrixCalculator/
 ### For the Desktop (PyQt5) Version
 ```bash
 # Clone the repository:
-git clone https://github.com/yellepeddibk/MatrixCalculator.git
-cd MatrixCalculator
+git clone https://github.com/yellepeddibk/matrix-calculator.git
+cd matrix-calculator
 
 # Create a virtual environment:
 python -m venv venv
@@ -68,21 +73,16 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 # Run the application:
-python PyQt5_Version.py
+python desktop/matrix_calculator_qt.py
 ```
 
-### For the Web (Flask) Version
+### For the WebApp (Flask) Version
 ```bash
-# Navigate to the MainWebApp directory:
-cd MainWebApp
-
 # Run the Flask server:
-python flask_app.py
+python webapp/app.py
 
 # Access the web app on your local machine:
-http://127.0.0.1:80
-
-# To access from another device on the same network, use the address shown in the terminal output.
+http://127.0.0.1:8000
 ```
 
 ## API Endpoints
