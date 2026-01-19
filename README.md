@@ -1,102 +1,72 @@
-# Matrix Calculator Web App | Flask, AWS, NumPy, PyQt5, Bootstrap
+# Matrix Calculator Web App
 
-## Overview
-The Matrix Calculator Web App began as a simple desktop application built with PyQt5 for performing essential matrix computations. Initially designed for quick calculations of determinants and Reduced Row Echelon Form (RREF), the project evolved into a Flask-powered web application to enhance accessibility and scalability. 
-
-The web version features a modern, responsive interface built with HTML, CSS (Bootstrap), and JavaScript. Although it was previously hosted on AWS EC2 with Nginx, Gunicorn, and SSL encryption, the AWS deployment is currently offline due to cost considerations. However, you should be able to run the Web App through your local host - instructions are below.
-
-This project demonstrates robust input validation, comprehensive error handling, and efficient computation methods, ensuring a reliable user experience in both desktop and web environments.
-
----
+A Flask-powered web application for performing matrix computations including determinant calculation and Reduced Row Echelon Form (RREF).
 
 ## Features
 
-### Desktop (PyQt5) Version
-- **Standalone GUI:** A dedicated desktop application built with PyQt5.
-- **Matrix Input Validation:** Ensures correct matrix values prior to computation.
-- **Supported Operations:**
-  - Determinant Calculation (for square matrices)
-  - Reduced Row Echelon Form (RREF)
-- **Error Handling:** Provides clear notifications for invalid inputs.
-
-### Web Version (Flask & JavaScript)
-- **Modern Web Interface:** Developed using HTML, CSS (Bootstrap), and JavaScript for an intuitive user experience.
+- **Modern Web Interface:** Built with HTML, CSS (Bootstrap), and JavaScript
 - **Matrix Computation API:**
-  - `/api/determinant` – Computes the determinant of a given matrix.
-  - `/api/rref` – Computes the Reduced Row Echelon Form (RREF) of a given matrix.
-- **Dynamic Input Fields:** Allows users to adjust matrix dimensions and input values on the fly.
-- **Responsive Design:** Ensures compatibility across various devices.
-- **Error Handling:** Returns informative messages for invalid or erroneous inputs.
+  - `/api/determinant` – Computes the determinant of a square matrix
+  - `/api/rref` – Computes the Reduced Row Echelon Form
+- **Dynamic Input:** Adjustable matrix dimensions with real-time validation
+- **Responsive Design:** Works across desktop and mobile devices
 
-### Deployment & Optimization (AWS - Previously Hosted)
-- **Cloud Hosting:** Deployed on AWS EC2 for scalability.
-- **Security:** Configured with Nginx as a reverse proxy and secured with SSL encryption.
-- **Performance:** Optimized using Gunicorn to manage multiple concurrent users.
-- **Maintenance:** Automated scripts monitor server health and optimize response times.
-- **Status:** AWS deployment is currently offline due to cost considerations.
+---
+
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/yellepeddibk/matrix-calculator.git
+cd matrix-calculator
+
+# Create a virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the Flask server
+python webapp/app.py
+```
+
+Open http://127.0.0.1:8000 in your browser.
 
 ---
 
 ## Project Structure
 ```
 matrix-calculator/
-├── webapp/                        # Folder containing the Flask web app
-│   ├── app.py                     # Flask backend server
+├── webapp/
+│   ├── app.py              # Flask backend
 │   ├── templates/
-│   │   └── matrix.html            # Web interface (HTML template)
+│   │   └── matrix.html     # Web interface
 │   └── static/
 │       ├── js/
-│       │   └── matrix.js          # JavaScript logic for the frontend
+│       │   └── matrix.js   # Frontend logic
 │       └── css/
-│           └── style.css          # Styling for the web app
-├── desktop/
-│   └── matrix_calculator_qt.py    # PyQt5 GUI version of the calculator
-├── LICENSE                        # MIT License file
-├── README.md                      # Documentation for the project (this file)
-└── requirements.txt               # List of dependencies required to run the project
+│           └── style.css   # Styling
+├── tests/
+│   ├── conftest.py         # Pytest configuration
+│   └── test_app_smoke.py   # Smoke tests
+├── requirements.txt        # Python dependencies
+└── README.md
 ```
+
 ---
-
-## Installation & Setup
-
-### For the Desktop (PyQt5) Version
-```bash
-# Clone the repository:
-git clone https://github.com/yellepeddibk/matrix-calculator.git
-cd matrix-calculator
-
-# Create a virtual environment:
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies:
-pip install -r requirements.txt
-
-# Run the application:
-python desktop/matrix_calculator_qt.py
-```
-
-### For the WebApp (Flask) Version
-```bash
-# Run the Flask server:
-python webapp/app.py
-
-# Access the web app on your local machine:
-http://127.0.0.1:8000
-```
 
 ## API Endpoints
 
-### Determinant Calculation:
-#### - Endpoint: ```/api/determinant```
-#### - Method: POST
-#### - Request Body (JSON):
+### Determinant Calculation
+- **Endpoint:** `POST /api/determinant`
+- **Request Body:**
 ```json
 {
   "matrix": [[2, 4], [3, 1]]
 }
 ```
-#### - Response:
+- **Response:**
 ```json
 {
   "result": -10.0
@@ -104,42 +74,60 @@ http://127.0.0.1:8000
 ```
 
 ### Reduced Row Echelon Form (RREF)
-#### - Endpoint: ```/api/rref```
-#### - Method: POST
-#### - Request Body (JSON):
-```
+- **Endpoint:** `POST /api/rref`
+- **Request Body:**
+```json
 {
   "matrix": [[1, 2], [3, 4]]
 }
 ```
-#### - Response:
-```
+- **Response:**
+```json
 {
   "result": [[1, 0], [0, 1]]
 }
 ```
 
-## Requirements
-### To run this project, install the following Python libraries:
+---
 
-#### - Flask
-#### - NumPy
-#### - PyQt5
-#### - Gunicorn (for production deployment)
-### Other dependencies listed in ```requirements.txt```:
+## Requirements
+
+- Python 3.11+
+- Flask
+- NumPy
+- Gunicorn (for production)
+
+Install all dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
+---
+
+## Development
+
+```bash
+# Run linter
+ruff check .
+
+# Run tests
+pytest -v
+```
+
+---
+
 ## Future Enhancements
-#### - Implement additional matrix operations such as inversion, multiplication, and rank determination.
-#### - Introduce advanced visualization features for matrix transformations.
-#### - Explore alternative cloud deployment options to reduce hosting costs.
-#### - Expand the API to handle more complex mathematical computations.
+
+- Additional matrix operations (inversion, multiplication, rank)
+- Cloud deployment with free hosting
+- Expanded API capabilities
+
+---
 
 ## License
-#### This project is licensed under the MIT License.
+
+MIT License
 
 ## Author
-### Bhargav Yellepeddi
-#### - GitHub: @yellepeddibk
+
+**Bhargav Yellepeddi** — [@yellepeddibk](https://github.com/yellepeddibk)
