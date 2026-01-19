@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import (QApplication, QWidget, QPushButton, QVBoxLayout, QStackedWidget, QLabel, 
-                             QGridLayout, QLineEdit, QHBoxLayout, QMessageBox)
+                             QGridLayout, QLineEdit, QHBoxLayout)
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
 import sys
