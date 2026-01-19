@@ -1,4 +1,4 @@
-Flask==2.1.2
-Gunicorn==20.1.0
-numpy==1.23.5
-PyQt5==5.15.9
+Flask>=3.0,<4
+Werkzeug>=3.0,<4
+Gunicorn>=20.1.0
+numpy>=1.23.5
