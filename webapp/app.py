@@ -1,7 +1,16 @@
-from flask import Flask, request, jsonify, render_template
+import os
+
+from flask import Flask, jsonify, render_template, request
 import numpy as np
 
 app = Flask(__name__)
+
+
+# Health check endpoint for deployment
+@app.route("/healthz")
+def healthz():
+    return jsonify({"status": "ok"})
+
 
 # Serve the HTML template
 @app.route("/")
@@ -54,4 +63,5 @@ def compute_rref(matrix: np.ndarray) -> np.ndarray:
     return rref
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)

@@ -2,6 +2,8 @@
 
 A Flask-powered web application for performing matrix computations including determinant calculation and Reduced Row Echelon Form (RREF).
 
+**Live Demo:** _Coming soon_
+
 ## Features
 
 - **Modern Web Interface:** Built with HTML, CSS (Bootstrap), and JavaScript
@@ -116,10 +118,20 @@ pytest -v
 
 ---
 
+## Deploy on Render
+
+1. Connect your GitHub repo to [Render](https://render.com)
+2. Create a new **Web Service**
+3. Configure:
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `gunicorn webapp.app:app`
+4. Deploy and get your live URL
+
+---
+
 ## Future Enhancements
 
 - Additional matrix operations (inversion, multiplication, rank)
-- Cloud deployment with free hosting
 - Expanded API capabilities
 
 ---
