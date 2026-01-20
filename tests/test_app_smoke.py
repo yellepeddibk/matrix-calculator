@@ -19,3 +19,11 @@ def test_app_has_routes(app):
     assert "/" in rules
     assert "/api/determinant" in rules
     assert "/api/rref" in rules
+
+
+def test_healthz_endpoint(app):
+    """Test that the healthz endpoint returns ok status."""
+    with app.test_client() as client:
+        response = client.get("/healthz")
+        assert response.status_code == 200
+        assert response.json == {"status": "ok"}
